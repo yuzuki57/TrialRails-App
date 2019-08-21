@@ -4,7 +4,7 @@
     <a href="/boards" class="btn btn-outline-dark">掲示板一覧</a>
   </div>
 </div>
-<%= form_for @boards do |f| %>
+<%= form_for @board do |f| %>
     <div class="form-group">
         <%= f.label :name, '名前' %>
         <%= f.text_field :name, class: 'form-control' %>
