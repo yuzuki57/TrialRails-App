@@ -14,21 +14,16 @@
 #  index_users_on_name  (name) UNIQUE
 #
 
-class User < ApplicationRecord
-    has_secure_password
+require 'rails_helper'
 
-    validates :name,
-      presence: true,
-      uniqueness: true,
-      length: { maximum: 16 },
-      format: {
-          with: /\A[a-z0-9]+\z/,
-          message: 'は小文字で入力してください'
-      }
-    validates :password,
-      length: { minimum: 8 }
+RSpec.describe User, type: :model do
+  describe '#age' do
+    context '20年前の生年月日の場合' do
+      let(:user) { User.new(birthday: Time.zone.now - 20.years) }
 
-    def age
-        0
+      it '年齢が20歳であること' do
+        expect(user.age).to eq20
+      end
     end
+  end
 end
